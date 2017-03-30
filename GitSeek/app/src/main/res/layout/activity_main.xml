@@ -19,5 +19,6 @@
         android:layout_marginBottom="191dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Enter Github UserName" />
+        android:hint="Enter Github Username"/>
+
 </RelativeLayout>
