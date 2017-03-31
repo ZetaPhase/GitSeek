@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         github_search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RequestQueue queue
                 String url = "https://api.github.com/users/" + username;
             }
         });
