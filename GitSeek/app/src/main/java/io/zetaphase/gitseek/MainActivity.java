@@ -17,10 +17,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         github_search_button = (Button) findViewById(R.id.github_search_button);
         github_username_edittext = (EditText) findViewById(R.id.searchGithubUsername);
+        final String username = github_username_edittext.getText().toString();
         github_search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //need to call github api right here
+                String url = "https://api.github.com/users/" + username;
             }
         });
     }
