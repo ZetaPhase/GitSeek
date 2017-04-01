@@ -7,10 +7,11 @@
         android:id="@+id/user_info_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Name (Username)"
+        android:textSize="20sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Name (Username)"
-        android:textSize="20sp" />
+        android:layout_marginTop="14dp" />
 
     <ImageView
         android:id="@+id/user_info_avatar"
@@ -21,12 +22,12 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/user_info_bio"
+        android:id="@+id/user_info_num_followers_following"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:text="Number of Followers and Following" />
 
     <TextView
         android:id="@+id/user_info_location"
@@ -35,15 +36,42 @@
         android:text="Location"
         android:textSize="17sp"
         android:layout_below="@+id/user_info_avatar"
-        android:layout_alignLeft="@+id/user_info_bio"
-        android:layout_alignStart="@+id/user_info_bio" />
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@android:drawable/ic_menu_mylocation"
-        android:layout_below="@+id/user_info_avatar"
+        android:layout_alignTop="@+id/user_info_location"
         android:layout_toLeftOf="@+id/user_info_location"
         android:layout_toStartOf="@+id/user_info_location" />
+
+    <TextView
+        android:id="@+id/user_info_numrepos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of Repos and Widgets"
+        android:layout_below="@+id/user_info_location"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="9dp" />
+
+    <Button
+        android:id="@+id/user_info_to_github_button"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Go to Github"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/user_info_view_repos_button"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="37dp"
+        android:text="View User's repositories" />
 </RelativeLayout>
