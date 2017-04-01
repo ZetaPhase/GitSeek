@@ -1,5 +1,6 @@
 package io.zetaphase.gitseek;
 
+import android.content.Intent;
 import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,21 +33,35 @@ public class MainActivity extends AppCompatActivity {
         github_search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                String url = "https://api.github.com/users/" + username;
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                setJson(response);
-                            }
-                        }, new Response.ErrorListener() {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                        String url = "https://api.github.com/users/" + username;
+                        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        setJson(response);
+                                    }
+                                }, new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 Log.d("ERROR", "that was unsuccessful");
                             }
+                        });
+                        queue.add(stringRequest);
+                    }
                 });
-                queue.add(stringRequest);
+                thread.start();
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(MainActivity.this, UserInfoPopup.class);
+                intent.putExtra("JSON", getJson());
+                startActivity(intent);
             }
         });
     }
