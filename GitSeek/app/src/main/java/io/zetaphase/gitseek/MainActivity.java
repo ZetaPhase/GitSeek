@@ -52,4 +52,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setJson(String json){ this.json = json; }
+    public String getJson(){ return this.json; }
 }
