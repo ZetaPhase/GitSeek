@@ -13,10 +13,37 @@
         android:textSize="20sp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/user_info_avatar"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@mipmap/ic_launcher"
         android:layout_below="@+id/user_info_name"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/user_info_bio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/user_info_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:textSize="17sp"
+        android:layout_below="@+id/user_info_avatar"
+        android:layout_alignLeft="@+id/user_info_bio"
+        android:layout_alignStart="@+id/user_info_bio" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@android:drawable/ic_menu_mylocation"
+        android:layout_below="@+id/user_info_avatar"
+        android:layout_toLeftOf="@+id/user_info_location"
+        android:layout_toStartOf="@+id/user_info_location" />
 </RelativeLayout>
