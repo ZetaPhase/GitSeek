@@ -22,6 +22,9 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".UserInfoPopup"
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
