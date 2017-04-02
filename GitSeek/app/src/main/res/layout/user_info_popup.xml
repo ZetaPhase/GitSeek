@@ -70,7 +70,7 @@
 
     <Button
         android:id="@+id/user_info_to_github_button"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -79,7 +79,7 @@
 
     <Button
         android:id="@+id/user_info_view_repos_button"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
