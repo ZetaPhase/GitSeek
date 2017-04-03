@@ -1,7 +1,6 @@
 package io.zetaphase.gitseek;
 
 import android.content.Intent;
-import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,37 +27,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         github_search_button = (Button) findViewById(R.id.github_search_button);
         github_username_edittext = (EditText) findViewById(R.id.searchGithubUsername);
-        final String username = github_username_edittext.getText().toString();
         json = "";
         github_search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread thread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                        String url = "https://api.github.com/users/" + username;
-                        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                                new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-                                        setJson(response);
-                                    }
-                                }, new Response.ErrorListener() {
+                Log.d("CLICK", "button is clicked");
+                final String username = github_username_edittext.getText().toString();
+                setJson("NOTHING");
+                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                String url = "https://api.github.com/users/" + username;
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                        new Response.Listener<String>() {
                             @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.d("ERROR", "that was unsuccessful");
+                            public void onResponse(String response) {
+                                setJson(response);
                             }
-                        });
-                        queue.add(stringRequest);
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("ERROR", "that was unsuccessful");
                     }
                 });
-                thread.start();
-                try {
-                    thread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                queue.add(stringRequest);
+                while(true){
+                    if(getJson()=="NOTHING"){
+                        continue;
+                    }else{
+                        break;
+                    }
                 }
+                Log.d("JSON", getJson());
                 Intent intent = new Intent(MainActivity.this, UserInfoPopup.class);
                 intent.putExtra("JSON", getJson());
                 startActivity(intent);
